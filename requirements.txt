@@ -1,2 +1,6 @@
 # Supported long-term-support series (as of November 2026)
+
 Django>=5.2.19,<5.3
+whitenoise>=6.8,<7
+gunicorn>=23,<26
+
