@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+# Django local data and built static files
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+media/
+# secrets and local configuration
+.env
+.env.*
+!.env.example
+.DS_Store
+.idea/
+.vscode/

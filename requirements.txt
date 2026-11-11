@@ -1,0 +1,2 @@
+# Supported long-term-support series (as of November 2026)
+Django>=5.2.19,<5.3
