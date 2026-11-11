@@ -1,0 +1,15 @@
+{% extends 'shop/base.html' %}
+{% block title %}Shop All — Ipswich Retail{% endblock %}
+{% block content %}
+<section class="catalogue-hero"><div class="container"><span class="eyebrow">HANDPICKED FOR YOU</span><div class="catalogue-title-row"><h1>Find your <em>thing.</em></h1><p>From cosy corners to productive desks — explore our considered collection of everyday favourites.</p></div></div></section>
+<section class="container catalogue-section">
+  <form class="filters" action="{% url 'shop:catalogue' %}" method="get" role="search">
+    <label class="search-field"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search products</span><input name="q" value="{{ query }}" placeholder="Search for something good…" autocomplete="off"></label>
+    <label class="select-field"><span class="sr-only">Product category</span><select name="category"><option value="">All categories</option>{% for item in categories %}<option value="{{ item.slug }}" {% if selected_category == item.slug %}selected{% endif %}>{{ item.name }}</option>{% endfor %}</select></label>
+    <label class="select-field"><span class="sr-only">Sort products</span><select name="sort"><option value="featured" {% if sort == 'featured' %}selected{% endif %}>Featured first</option><option value="low" {% if sort == 'low' %}selected{% endif %}>Price: low to high</option><option value="high" {% if sort == 'high' %}selected{% endif %}>Price: high to low</option></select></label>
+    <button class="btn btn-dark filter-button" type="submit">Apply ↗</button>
+  </form>
+  <div class="result-heading"><h2>The collection</h2><span>{{ products|length }} pieces</span></div>
+  <div class="product-grid catalogue-grid">{% for product in products %}{% include 'shop/_product_card.html' %}{% empty %}<div class="empty-results"><span>✳</span><h3>Nothing found this time.</h3><p>Try another search or explore all our favourites.</p><a href="{% url 'shop:catalogue' %}" class="btn btn-dark">See all products ↗</a></div>{% endfor %}</div>
+</section>
+{% endblock %}

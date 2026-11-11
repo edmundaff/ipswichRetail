@@ -1,0 +1,26 @@
+# Local development demonstration only: SQLite and Django's runserver are NOT
+# production deployment solutions. Data is recreated when this container is replaced.
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_DEBUG: "true"
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1"
+    command: >
+      sh -c "python manage.py migrate --noinput &&
+             python manage.py seed_products &&
+             exec python manage.py runserver 0.0.0.0:8000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/', timeout=3)"
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
