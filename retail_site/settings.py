@@ -6,6 +6,7 @@ reviewed persistence, a production secret, HTTPS and suitable host settings.
 import os
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = os.environ.get('DJANGO_DEBUG', 'true').lower() in {'1', 'true', 'yes'}
