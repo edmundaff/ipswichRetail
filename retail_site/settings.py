@@ -52,8 +52,7 @@ TEMPLATES = [{
 }]
 WSGI_APPLICATION = 'retail_site.wsgi.application'
 ASGI_APPLICATION = 'retail_site.asgi.application'
-DATABASES = {
-        
+
 # Use PostgreSQL on Render, SQLite for local development.
 if os.environ.get("DATABASE_URL"):
     DATABASES = {
@@ -70,7 +69,6 @@ else:
         }
     }
 
-}
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
