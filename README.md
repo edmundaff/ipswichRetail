@@ -99,22 +99,3 @@ Ipswich_Retail_Django/
 └── START_ON_MAC.command
 ```
 
-## What happens next (not implemented in this first website deliverable)
-
-This package is **the website first**, as requested. The next stages will be done after you run and review it:
-
-1. Create a **new public GitHub repo** and push this project (excluding `.env`, `.venv` and `db.sqlite3`).
-2. Add a **Dockerfile** and Compose setup, then validate a containerised development environment.
-3. Add **GitHub Actions** CI for linting/checks/tests; capture passing and controlled failing runs.
-4. Decide on a suitable **free Python-capable host**, add proper production settings/database/static-file handling, and deploy.
-5. Add deployment/health monitoring and record evidence as you implement it.
-6. Write your **own** 3,000-word critical case-study report, using real screenshots, traceable commits, results, limitations and University of Suffolk Harvard citations. Disclose the use of AI according to the brief.
-
-### Honest implementation notes
-
-- Django application code and tests are **included**, but full runtime tests must be executed after dependencies are installed. This project was packaged in an environment without Django installed, so no passing Django test run is claimed.
-- The shop uses generated illustration assets, not real product photography.
-- SQLite is fine for local assessment demonstration; production should use a persistent managed database such as PostgreSQL.
-- `.env.example` documents configuration. It is **not** loaded automatically; export variables in your shell (or later add a deployment environment manager).
-- Orders use example details and are visible only in the local Django admin.
-- This is not a commercial checkout, and it is intentionally not PCI/payment compliant.
